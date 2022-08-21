@@ -1,0 +1,21 @@
+<section class="container mt-3">
+    <div class="card p-3 border-primary">
+      <div class="row">
+        <figure class="col-12 col-md-3">
+          <img class="img-fluid" [src]="myUser?.image" [alt]="myUser?.first_name">
+        </figure>
+        <div class="col-12 col-md-9">
+          <h2> {{myUser?.first_name}} <br>{{myUser?.last_name}}</h2>
+          <p>User name: {{myUser?.username}}</p>
+          <p>Email: <a [href]=" 'mailto:' + myUser?.email">{{myUser?.email}}</a></p>
+            <div class="d-flex justify-content-evenly">
+            <button class="btn btn-info" (click)="deleteUser(myUser.id)">Delete User</button>
+            <button class="btn btn-info" [routerLink]="['/newuser']">to update</button>
+            <button class="btn btn-info" [routerLink]="['/home']">Back to contacts</button>
+            </div>
+
+        </div>
+      </div>
+    </div>
+</section>
+  

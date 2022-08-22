@@ -1,5 +1,5 @@
-<section class="container mt-3">
-    
+<section class="container mt-3"> 
+    <h1>{{type}} usuario</h1>
     <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
 
         <div>
@@ -9,17 +9,13 @@
 
         <div>
             <label class="form-label"  for="last_name">Last Name</label>
-            <input class="form-control" type="text" id="last_name" formControlName="last_name" >
-        </div>
-
-        <div>
-            <label class="username"  for="username">Username</label>
-            <input class="form-control" type="text" id="username" formControlName="last_name" >
+            <input class="form-control" type="text" id="last_name" formControlName="last_name">
         </div>
 
         <div>
             <label class="form-label"  for="email">Email</label>
-            <input class="form-control" type="text" id="email" formControlName="email" >
+            <input class="form-control" type="text" id="email" formControlName="email">
+            
         </div>
 
         <div>
@@ -27,7 +23,6 @@
             <input class="form-control" type="text" id="image" formControlName="image" >
         </div>
 
-      
+        <input type="submit" [value]="type" class="btn btn-info mt-3">    
     </form>
-
 </section>

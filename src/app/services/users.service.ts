@@ -18,15 +18,22 @@ export class UsersService {
     return lastValueFrom(this.httpClient.get<any>(`${this.baseUrl}${pId}`))
   }
 
-  /*create(pUser: User) : Promise<User> {
-    const httpOptions = {
+  create(pUser: User) : Promise<User> {
+    /*const httpOptions = {
       headers: new HttpHeaders({
         "Content-typo": "aplication/json",
     })
-    }
-    return lastValueFrom(this.httpClient.post<User>(this.baseUrl, pUser, httpOptions))
-  }*/
+    }*/
+    return lastValueFrom(this.httpClient.post<User>(this.baseUrl, pUser))
+  }
 
+  delete(pId: number) : Promise<any>{
+    return lastValueFrom(this.httpClient.delete<any>(`${this.baseUrl}${pId}`))
+  }
+
+  update(pUser: User): Promise<any> {
+    return lastValueFrom(this.httpClient.put<any>(`${this.baseUrl} + ${pUser.id}`, pUser))
+  }
 
 }
 

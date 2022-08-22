@@ -15,11 +15,18 @@ export class UserCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   deleteUser(pId: number | undefined): void {
-    if(pId !== undefined) {
-      alert('deleting user❕')
+    let result = confirm("Deseas borrar al usuario " + this.myUser.first_name+"?");
+    if(result){
+      if(pId !== undefined) {
+        this.usersService.delete(pId).then(response => {
+          if (response != null) {
+            alert('Usuario borrado')
+          }
+        })
+        .catch(err => console.log(err))
+      }
     }
   } 
-
-
 }

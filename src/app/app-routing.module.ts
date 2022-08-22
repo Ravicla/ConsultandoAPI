@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: "home", component: UserListComponent},
   {path: "user/:iduser", component: UserViewComponent},
   {path: "newuser", component: FormComponent},
-  {path: "updateuser/:idcontact", component: FormComponent},
+  {path: "updateuser/:iduser", component: FormComponent},
   {path: "**", redirectTo: "home"}
 ];
 

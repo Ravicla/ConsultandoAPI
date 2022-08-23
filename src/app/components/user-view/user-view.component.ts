@@ -19,8 +19,11 @@ export class UserViewComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async(params: any) => {
       let id: number = parseInt(params.iduser)
-      let response = await this.usersService.getById(id)
-      console.log(response)
+      let response = await this.usersService.getById(id);
+      console.log(response);
+      if(response.error){
+        alert(response.error)
+      }      
       this.myUser = response;
     })
   }

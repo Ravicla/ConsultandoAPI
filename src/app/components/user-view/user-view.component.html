@@ -10,7 +10,7 @@
           <p>Email: <a [href]=" 'mailto:' + myUser?.email">{{myUser?.email}}</a></p>
             <div class="d-flex justify-content-evenly">
             <button class="btn btn-info" (click)="deleteUser(myUser.id)">Delete User</button>
-            <button class="btn btn-info" [routerLink]="['/newuser']">to update</button>
+            <button class="btn btn-info" [routerLink]="['/updateuser', myUser.id]">to update</button>
             <button class="btn btn-info" [routerLink]="['/home']">Back to contacts</button>
             </div>
 

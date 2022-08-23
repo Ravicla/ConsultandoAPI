@@ -28,12 +28,20 @@ export class FormComponent implements OnInit {
   }
   async getDataForm() : Promise<void>{
     let newUser = this.userForm.value;
+    //newUser.id=200;
+      console.log(newUser);
       if(newUser.id){
         let response = await this.usersServices.update(newUser);
-        if(response.updatedAt) {
+        console.log(response)
+
+        if(response.id) {
           alert('Usuario actualizado')
           this.router.navigate(['/home']);
+        }else{
+          alert(response.error);
+          this.router.navigate(['/home']);
         }
+        
       } else {
       let response = await this.usersServices.create(newUser)
       console.log(response)

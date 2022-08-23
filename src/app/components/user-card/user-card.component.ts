@@ -21,12 +21,16 @@ export class UserCardComponent implements OnInit {
     if(result){
       if(pId !== undefined) {
         this.usersService.delete(pId).then(response => {
-          if (response != null) {
+          console.log(response);
+          if (response.id) {
             alert('Usuario borrado')
+          }else{
+            alert(response.error)
           }
+
         })
         .catch(err => console.log(err))
-      }
+      }     
     }
   } 
 }

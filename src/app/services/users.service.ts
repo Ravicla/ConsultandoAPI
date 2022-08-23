@@ -32,7 +32,7 @@ export class UsersService {
   }
 
   update(pUser: User): Promise<any> {
-    return lastValueFrom(this.httpClient.put<any>(`${this.baseUrl} + ${pUser.id}`, pUser))
+    return lastValueFrom(this.httpClient.put<any>(`${this.baseUrl}${pUser.id}`, pUser))
   }
 
 }

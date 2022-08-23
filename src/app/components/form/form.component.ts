@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
 import { UsersService } from 'src/app/services/users.service';
@@ -19,29 +19,45 @@ export class FormComponent implements OnInit {
     private activatedRoute: ActivatedRoute
     ) { 
     this.userForm = new FormGroup({
-      first_name: new FormControl('', []),
-      last_name: new FormControl('', []),
-      username: new FormControl('', []),
-      email: new FormControl('', []),
-      image: new FormControl('', [])
+
+      first_name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3)
+      ]),
+
+      last_name: new FormControl('', [
+      ]),
+
+      email: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
+      ]),
+
+      image: new FormControl('', [ 
+      ])
+
     }, [])
   }
+
   async getDataForm() : Promise<void>{
+
+    if(this.userForm.valid) {
+    } else {
+      alert ('el formulario no esta bien relleno')
+    }
+
+
+
     let newUser = this.userForm.value;
-    //newUser.id=200;
-      console.log(newUser);
       if(newUser.id){
         let response = await this.usersServices.update(newUser);
-        console.log(response)
-
         if(response.id) {
           alert('Usuario actualizado')
           this.router.navigate(['/home']);
         }else{
           alert(response.error);
           this.router.navigate(['/home']);
-        }
-        
+        }  
       } else {
       let response = await this.usersServices.create(newUser)
       console.log(response)
@@ -51,7 +67,6 @@ export class FormComponent implements OnInit {
         alert('hubo un herror');
       }   
     }
-  
   }
 
   ngOnInit(): void {
@@ -64,7 +79,6 @@ export class FormComponent implements OnInit {
         this.userForm = new FormGroup({
           first_name: new FormControl(user?.first_name, []),
           last_name: new FormControl(user?.last_name, []),
-          username: new FormControl(user?.username, []),
           email: new FormControl(user?.email, []),
           image: new FormControl(user?.image, []),
           id: new FormControl(user?.id, [])

@@ -23,6 +23,6 @@
             <input class="form-control" type="text" id="image" formControlName="image" >
         </div>
 
-        <input type="submit" [value]="type" class="btn btn-info mt-3">    
+        <input type="submit" [value]="type" class="btn btn-info mt-3" [disabled]="!userForm.valid">    
     </form>
 </section>

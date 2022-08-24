@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
 import { UsersService } from 'src/app/services/users.service';
-
+import Swal from 'sweetalert2' 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -49,27 +49,54 @@ export class FormComponent implements OnInit {
 
     if(this.userForm.valid) {
     } else {
-      alert ('el formulario no esta bien relleno')
+      alert ('')
+      Swal.fire(
+        'Informacion!',
+        'El formulario no esta bien relleno',
+        'info');
     }
-
+    
     let newUser = this.userForm.value;
+    
       if(newUser.id){
         let response = await this.usersServices.update(newUser);
         if(response.id) {
-          alert('Usuario actualizado')
-          this.router.navigate(['/home']);
+          Swal.fire(
+            'OK!',
+            'Usuario actualizado',
+            'success')
+            .then((result) => {
+              this.router.navigate(['/home']);
+            });
+          
         }else{
-          alert(response.error);
-          this.router.navigate(['/home']);
+          Swal.fire(
+            'Error!',
+            response.error,
+            'error')
+            .then((result) => {
+              this.router.navigate(['/home']);
+            });
         }  
       } else {
       let response = await this.usersServices.create(newUser)
       console.log(response)
       if(response.id) {
-        alert('Usuario creado')
-        this.router.navigate(['/home'])
+        Swal.fire(
+          'OK!',
+          'Usuario creado',
+          'success')
+          .then((result) => {
+            this.router.navigate(['/home']);
+          });
       } else {
-        alert('hubo un herror');
+        Swal.fire(
+          'Error!',
+          'Hubo un error',
+          'error')
+          .then((result) => {
+            this.router.navigate(['/home']);
+          });
       }   
     }
   }

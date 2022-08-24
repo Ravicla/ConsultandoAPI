@@ -19,11 +19,6 @@ export class UsersService {
   }
 
   create(pUser: User) : Promise<User> {
-    /*const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-typo": "aplication/json",
-    })
-    }*/
     return lastValueFrom(this.httpClient.post<User>(this.baseUrl, pUser))
   }
 

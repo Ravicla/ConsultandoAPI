@@ -22,10 +22,14 @@ export class FormComponent implements OnInit {
 
       first_name: new FormControl('', [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        Validators.maxLength(20)
       ]),
 
       last_name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)
       ]),
 
       email: new FormControl('', [
@@ -34,6 +38,8 @@ export class FormComponent implements OnInit {
       ]),
 
       image: new FormControl('', [ 
+        Validators.required,
+        Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')
       ])
 
     }, [])
@@ -45,8 +51,6 @@ export class FormComponent implements OnInit {
     } else {
       alert ('el formulario no esta bien relleno')
     }
-
-
 
     let newUser = this.userForm.value;
       if(newUser.id){
@@ -62,6 +66,7 @@ export class FormComponent implements OnInit {
       let response = await this.usersServices.create(newUser)
       console.log(response)
       if(response.id) {
+        alert('Usuario creado')
         this.router.navigate(['/home'])
       } else {
         alert('hubo un herror');
@@ -85,6 +90,13 @@ export class FormComponent implements OnInit {
         }, [])
       }
     })
+  }
+  checkControl(pControlName: string, pError: string): boolean{
+    if(this.userForm.get(pControlName)?.hasError(pError) && this.userForm.get(pControlName)?.touched){
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

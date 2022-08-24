@@ -4,23 +4,30 @@
 
         <div>
             <label class="form-label" for="first_name">Name</label>
-            <input class="form-control" type="text" id="first_name" formControlName="first_name">
+            <input class="form-control" type="text" id="first_name" formControlName="first_name">            
+            <p class="error" *ngIf="checkControl('first_name', 'required')">Campo requerido</p>
+            <p class="error" *ngIf="checkControl('first_name', 'minlength')">La longitud del camo tiene que ser al menos de 3 caracteres</p>
           </div>
 
         <div>
             <label class="form-label"  for="last_name">Last Name</label>
             <input class="form-control" type="text" id="last_name" formControlName="last_name">
+            <p class="error" *ngIf="checkControl('last_name', 'required')">Campo requerido</p>
+            <p class="error" *ngIf="checkControl('last_name', 'minlength')">La longitud del camo tiene que ser al menos de 3 caracteres</p>
         </div>
 
         <div>
             <label class="form-label"  for="email">Email</label>
             <input class="form-control" type="text" id="email" formControlName="email">
+            <p class="error" *ngIf="checkControl('email', 'required')">Campo requerido</p>
             
         </div>
 
         <div>
             <label class="form-label"  for="image">Photo</label>
-            <input class="form-control" type="text" id="image" formControlName="image" >
+            <input class="form-control" type="text" id="image" formControlName="image">
+            <p class="error" *ngIf="checkControl('image', 'required')">Campo requerido</p>
+            <p class="error" *ngIf="checkControl('image', 'pattern')">solo aceptan imagenes con extencion .jpg o .png</p>
         </div>
 
         <input type="submit" [value]="type" class="btn btn-info mt-3" [disabled]="!userForm.valid">    

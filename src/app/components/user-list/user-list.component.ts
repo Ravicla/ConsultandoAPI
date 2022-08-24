@@ -17,7 +17,6 @@ export class UserListComponent implements OnInit {
       let response = await this.usersService.getAll()
       this.arrUsers = response.data;
     } catch (error) {
-      console.log(this.arrUsers)
     }
    
   }

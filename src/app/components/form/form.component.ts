@@ -46,10 +46,8 @@ export class FormComponent implements OnInit {
   }
 
   async getDataForm() : Promise<void>{
-
     if(this.userForm.valid) {
     } else {
-      alert ('')
       Swal.fire(
         'Informacion!',
         'El formulario no esta bien relleno',
@@ -80,7 +78,7 @@ export class FormComponent implements OnInit {
         }  
       } else {
       let response = await this.usersServices.create(newUser)
-      console.log(response)
+
       if(response.id) {
         Swal.fire(
           'OK!',

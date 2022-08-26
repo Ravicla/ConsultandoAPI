@@ -11,8 +11,8 @@ export class UsersService {
   baseUrl: string = 'https://peticiones.online/api/users/'
   constructor(private httpClient: HttpClient) { }
 
-  getAll(): Promise<any> {
-    return lastValueFrom(this.httpClient.get<any>(this.baseUrl))
+  getAll(pPage: number = 1): Promise<any> {
+    return lastValueFrom(this.httpClient.get<any>(`${this.baseUrl}?page=${pPage}`))
   }
   getById(pId: number): Promise<any> {
     return lastValueFrom(this.httpClient.get<any>(`${this.baseUrl}${pId}`))
@@ -22,7 +22,7 @@ export class UsersService {
     return lastValueFrom(this.httpClient.post<User>(this.baseUrl, pUser))
   }
 
-  delete(pId: number) : Promise<any>{
+  delete(pId: number) : Promise<any> {
     return lastValueFrom(this.httpClient.delete<any>(`${this.baseUrl}${pId}`))
   }
 

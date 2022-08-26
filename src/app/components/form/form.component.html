@@ -1,4 +1,6 @@
-<section class="container mt-3"> 
+<section class="container mt-3">
+    
+
     <h1>{{type}} usuario</h1>
     <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
 
@@ -30,6 +32,6 @@
             <p class="error" *ngIf="checkControl('image', 'pattern')">solo aceptan imagenes con extencion .jpg o .png</p>
         </div>
 
-        <input type="submit" [value]="type" class="btn btn-info mt-3" [disabled]="!userForm.valid">    
+        <input type="submit" [value]="type" class="btn btn-info mt-3" [disabled]="!userForm.valid">  
     </form>
 </section>

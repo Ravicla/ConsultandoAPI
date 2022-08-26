@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-view',
@@ -22,7 +23,7 @@ export class UserViewComponent implements OnInit {
       let response = await this.usersService.getById(id);
       console.log(response);
       if(response.error){
-        alert(response.error)
+        Swal.fire(response.error, '', 'error');
       }      
       this.myUser = response;
     })
@@ -33,7 +34,11 @@ export class UserViewComponent implements OnInit {
       if(pId !== undefined) {
         this.usersService.delete(pId).then(response => {
           if (response != null) {
-            alert('Usuario borrado')
+            Swal.fire(
+              'OK!',
+              'Usuario borrado',
+              'success'
+            )
           }
         })
         .catch(err => console.log(err))

@@ -28,22 +28,28 @@ export class UserViewComponent implements OnInit {
       this.myUser = response;
     })
   }
+  
   deleteUser(pId: number | undefined): void {
-    let result = confirm("Deseas borrar al usuario "+ this.myUser.first_name+"?");
-    if(result){
-      if(pId !== undefined) {
-        this.usersService.delete(pId).then(response => {
-          if (response != null) {
-            Swal.fire(
+    Swal.fire({
+      title: "Deseas borrar al usuario "+ this.myUser.first_name+"?",
+      showDenyButton: true,
+      confirmButtonText: 'Aceptar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) { 
+        if(pId !== undefined) { 
+          this.usersService.delete(pId).then(response => {
+            if (response != null) {
+              Swal.fire(
               'OK!',
               'Usuario borrado',
-              'success'
-            )
-          }
-        })
-        .catch(err => console.log(err))
+              'success')
+            }
+          })
+          .catch(err => console.log(err))
+        }       
       }
-    }
+    })      
   } 
-
 }
+

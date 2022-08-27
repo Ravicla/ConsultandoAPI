@@ -29,13 +29,13 @@ export class UserCardComponent implements OnInit {
         if(pId !== undefined) {
           this.usersService.delete(pId).then(response => {
             if (response.id) {
-              Swal.fire('Usuario borrado '+ this.myUser.first_name, '', 'success');
+              Swal.fire('Fue borrado el usuario '+ this.myUser.first_name, '', 'success');
             }else{
               Swal.fire(response.error, '', 'error');
             }
           })
           .catch(err => console.log(err))
-        }          
+        } 
       } 
     })
   } 

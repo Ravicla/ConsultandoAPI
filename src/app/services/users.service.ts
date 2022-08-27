@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User } from '../interfaces/user.interface';
@@ -14,6 +14,7 @@ export class UsersService {
   getAll(pPage: number = 1): Promise<any> {
     return lastValueFrom(this.httpClient.get<any>(`${this.baseUrl}?page=${pPage}`))
   }
+
   getById(pId: number): Promise<any> {
     return lastValueFrom(this.httpClient.get<any>(`${this.baseUrl}${pId}`))
   }

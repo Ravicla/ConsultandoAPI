@@ -3,9 +3,9 @@
   <div class="card-body">
     <h5 class="card-title">{{myUser.first_name}} {{myUser.last_name}}</h5>
     <div class="d-flex justify-content-evenly">
-      <button class="btn btn-info m-1" [routerLink]="['/user', myUser.id]"><i class="fa-regular fa-eye"></i></button>
-      <button class="btn btn-info m-1" [routerLink]="['/updateuser', myUser.id]"><i class="fa-regular fa-pen-to-square"></i></button>
-      <button class="btn btn-info m-1" (click)="deleteUser(myUser.id)"><i class="fa-regular fa-trash-can"></i></button>
+      <button class="btn btn-info m-1" [routerLink]="['/user', myUser.id]"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="btn btn-info m-1" [routerLink]="['/updateuser', myUser.id]"><i class="fa-solid fa-rotate"></i></button>
+      <button class="btn btn-info m-1" (click)="deleteUser(myUser.id)"><i class="fa-solid fa-trash"></i></button>
     </div> 
   </div>
 </div>

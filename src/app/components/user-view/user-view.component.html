@@ -1,20 +1,25 @@
-<section class="container mt-3">
-    <div class="card p-3 border-primary">
-      <div class="row">
-        <figure class="col-12 col-md-3">
-          <img class="img-fluid" [src]="myUser?.image" [alt]="myUser?.first_name">
-        </figure>
-        <div class="col-12 col-md-9">
-          <h2> {{myUser?.first_name}} <br>{{myUser?.last_name}}</h2>
-          <p>User name: {{myUser?.username}}</p>
-          <p>Email: <a [href]=" 'mailto:' + myUser?.email">{{myUser?.email}}</a></p>
-            <div class="d-flex justify-content-evenly">
-            <button class="btn btn-info" (click)="deleteUser(myUser.id)">Borrar</button>
-            <button class="btn btn-info" [routerLink]="['/updateuser', myUser.id]">Actualizar</button>
-            <button class="btn btn-info" [routerLink]="['/home']">Volver a listado</button>
-            </div>
-        </div>
+<div class="card mb-3" style="max-width: 740px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <figure>
+      <img [src]="myUser?.image" [alt]="myUser?.first_name">
+    </figure>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title">{{myUser?.first_name}}</h3>
+        <h3 class="card-title">{{myUser?.last_name}}</h3>
+
+        <p class="card-text"><b>Nombre Usuario:</b> {{myUser?.username}}</p>
+        <p class="card-text"><small><b>Email: </b><a [href]=" 'mailto:' + myUser?.email">{{myUser?.email}}</a></small></p>
+
+        <div class="btn-group">
+          <button class="btn btn-outline-dark btn-sm" (click)="deleteUser(myUser.id)">Borrar</button>
+          <button class="btn btn-outline-dark btn-sm" [routerLink]="['/updateuser', myUser.id]">Actualizar</button>
+          <button class="btn btn-outline-dark btn-sm" [routerLink]="['/home']">Volver a listado</button>
+        </div> 
       </div>
     </div>
-</section>
+  </div>
+</div>
   

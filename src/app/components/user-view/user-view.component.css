@@ -1,11 +1,25 @@
-.row {
+/*.row {
   width: 600px;
-}
+}*/
 
-.container{
-  display: flex;
+.card{
+  display: block;
   align-items: center;
   justify-content: center;
   align-items: center;
-  padding: 10%;
+  margin: 10% 25%;
+}
+figure{
+  padding: 0;
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 20px;
+  overflow: hidden;
+  border-radius: 50%;  
+}
+
+img{
+  width: 100%;
+  height: auto;
+  display: block;
 }

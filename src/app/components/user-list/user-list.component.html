@@ -2,13 +2,13 @@
   <h1 class="text-center">Lista de Usuarios</h1>
   <hr>
 
-  <div class="d-flex justify-content-center">
-    <button class="btn btn-dark mx-1" (click)="gotoPage(currentPage - 1)" [disabled]="currentPage === 1"><i class="fa-solid fa-angles-left"></i></button>   
-    <button class="btn btn-dark mx-1" (click)="gotoPage(currentPage + 1)" [disabled]="currentPage === total_pages"><i class="fa-solid fa-angles-right"></i></button>
+  <div class="d-flex">
+    <button class="btn btn-dark mx-1 left" (click)="gotoPage(currentPage - 1)" [disabled]="currentPage === 1"><i class="fa-solid fa-angles-left"></i></button>   
+    <button class="btn btn-dark mx-1 right" (click)="gotoPage(currentPage + 1)" [disabled]="currentPage === total_pages"><i class="fa-solid fa-angles-right"></i></button>
   </div>
 
   <div class="row">
-    <article class="col-12 col-md-6 col-lg-4" *ngFor="let user of arrUsers">
+    <article class="col-4" *ngFor="let user of arrUsers">
       <app-user-card [myUser]="user"></app-user-card>
     </article>
 

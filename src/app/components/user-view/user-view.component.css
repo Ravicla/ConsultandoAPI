@@ -1,0 +1,11 @@
+.row {
+  width: 600px;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+}

@@ -1,8 +1,8 @@
-<div class="card" style="width: 18rem;">
+<div class="card">
   <img [src]="myUser.image" class="img-fluid rounded-start" [alt]="myUser.first_name">
   <div class="card-body">
     <h5 class="card-title">{{myUser.first_name}} {{myUser.last_name}}</h5>
-    <div class="d-flex justify-content-evenly">
+    <div class="d-flex justify-content-center">
       <button class="btn btn-info m-1" [routerLink]="['/user', myUser.id]"><i class="fa-solid fa-magnifying-glass"></i></button>
       <button class="btn btn-info m-1" [routerLink]="['/updateuser', myUser.id]"><i class="fa-solid fa-rotate"></i></button>
       <button class="btn btn-info m-1" (click)="deleteUser(myUser.id)"><i class="fa-solid fa-trash"></i></button>

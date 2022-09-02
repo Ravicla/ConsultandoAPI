@@ -1,10 +1,12 @@
 <div class="card mb-3" style="max-width: 740px;">
   <div class="row g-0">
+    
     <div class="col-md-4">
       <figure>
-      <img [src]="myUser?.image" [alt]="myUser?.first_name">
-    </figure>
-    </div>
+        <img [src]="myUser?.image" [alt]="myUser?.first_name">
+      </figure>
+    </div> 
+
     <div class="col-md-8">
       <div class="card-body">
         <h3 class="card-title">{{myUser?.first_name}}</h3>
@@ -15,9 +17,10 @@
 
         <div class="btn-group">
           <button class="btn btn-outline-dark btn-sm" (click)="deleteUser(myUser.id)">Borrar</button>
-          <button class="btn btn-outline-dark btn-sm" [routerLink]="['/updateuser', myUser.id]">Actualizar</button>
+          <button class="btn btn-outline-dark btn-sm" [routerLink]="['/updateuser', myUser?.id]">Actualizar</button>
           <button class="btn btn-outline-dark btn-sm" [routerLink]="['/home']">Volver a listado</button>
         </div> 
+
       </div>
     </div>
   </div>

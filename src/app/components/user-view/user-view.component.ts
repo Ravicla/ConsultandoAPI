@@ -21,10 +21,9 @@ export class UserViewComponent implements OnInit {
     this.activatedRoute.params.subscribe(async(params: any) => {
       let id: number = parseInt(params.iduser)
       let response = await this.usersService.getById(id);
-      console.log(response);
       if(response.error){
         Swal.fire(response.error, '', 'error');
-      }      
+      }   
       this.myUser = response;
     })
   }

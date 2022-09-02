@@ -41,44 +41,42 @@ export class FormComponent implements OnInit {
         Validators.required,
         Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')
       ])
-
     }, [])
   }
 
   async getDataForm() : Promise<void>{
-    if(this.userForm.valid) {
-    } else {
+    if(this.userForm.valid) { } 
+    else {
       Swal.fire(
-        'Informacion!',
-        'El formulario no esta bien relleno',
-        'info');
+      'Informacion!',
+      'El formulario no esta bien relleno',
+      'info');
     }
     
-    let newUser = this.userForm.value;
-    
-      if(newUser.id){
-        let response = await this.usersServices.update(newUser);
-        if(response.id) {
-          Swal.fire(
-            'OK!',
-            'Usuario actualizado',
-            'success')
-            .then((result) => {
-              this.router.navigate(['/home']);
-            });
-          
-        }else{
-          Swal.fire(
-            'Error!',
-            response.error,
-            'error')
-            .then((result) => {
-              this.router.navigate(['/home']);
-            });
-        }  
-      } else {
+    let newUser = this.userForm.value;  
+    if(newUser.id) {
+      let response = await this.usersServices.update(newUser);
+      if(response.id) {
+        Swal.fire(
+          'OK!',
+          'Usuario actualizado',
+          'success')
+          .then((result) => {
+            this.router.navigate(['/home']);
+        });          
+      } 
+      else {
+        Swal.fire(
+          'Error!',
+          response.error,
+          'error')
+          .then((result) => {
+            this.router.navigate(['/home']);
+        });
+      }  
+    } 
+    else {
       let response = await this.usersServices.create(newUser)
-
       if(response.id) {
         Swal.fire(
           'OK!',
@@ -86,15 +84,16 @@ export class FormComponent implements OnInit {
           'success')
           .then((result) => {
             this.router.navigate(['/home']);
-          });
-      } else {
+        });
+      } 
+      else {
         Swal.fire(
           'Error!',
           'Hubo un error',
           'error')
           .then((result) => {
             this.router.navigate(['/home']);
-          });
+        });
       }   
     }
   }
@@ -116,10 +115,12 @@ export class FormComponent implements OnInit {
       }
     })
   }
+
   checkControl(pControlName: string, pError: string): boolean{
     if(this.userForm.get(pControlName)?.hasError(pError) && this.userForm.get(pControlName)?.touched){
       return true;
-    } else {
+    } 
+    else {
       return false;
     }
   }

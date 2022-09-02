@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
 })
 export class UserCardComponent implements OnInit {
 
-  
   @Input()myUser!: User;
   constructor(private usersService: UsersService) { }
 
@@ -30,7 +29,8 @@ export class UserCardComponent implements OnInit {
           this.usersService.delete(pId).then(response => {
             if (response.id) {
               Swal.fire('Fue borrado el usuario '+ this.myUser.first_name, '', 'success');
-            }else{
+            }
+            else {
               Swal.fire(response.error, '', 'error');
             }
           })

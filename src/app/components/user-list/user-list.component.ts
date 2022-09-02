@@ -14,7 +14,6 @@ export class UserListComponent implements OnInit {
   total_pages: number = 0;
   constructor(private usersService: UsersService) { }
 
-
   ngOnInit(): void {
     this.gotoPage()
   }
@@ -27,8 +26,7 @@ export class UserListComponent implements OnInit {
       this.total_pages = response.total_pages;
     } catch (err) {
       console.log(err)
-    }
-    
+    }   
   }
 
 }  

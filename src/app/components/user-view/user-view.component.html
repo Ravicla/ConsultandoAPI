@@ -16,9 +16,9 @@
         <p class="card-text"><small><b>Email: </b><a [href]=" 'mailto:' + myUser?.email">{{myUser?.email}}</a></small></p>
 
         <div class="btn-group justify-content-center">
-          <button class="btn btn-outline-dark" (click)="deleteUser(myUser.id)">Borrar</button>
-          <button class="btn btn-outline-dark" [routerLink]="['/updateuser', myUser?.id]">Actualizar</button>
-          <button class="btn btn-outline-dark" [routerLink]="['/home']">Volver a listado</button>
+          <button class="btn btn-outline-dark btn-sm" (click)="deleteUser(myUser.id)">Borrar</button>
+          <button class="btn btn-outline-dark btn-sm" [routerLink]="['/updateuser', myUser?.id]">Actualizar</button>
+          <button class="btn btn-outline-dark btn-sm" [routerLink]="['/home']">Volver a listado</button>
         </div> 
 
       </div>
